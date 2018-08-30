@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, PopoverController } from 'ionic-angular';
+import { TimelinePopoverPage } from './timeline-popover/timeline-popover';
 
 @IonicPage()
 @Component({
@@ -8,8 +9,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TimelinePage {
 
-  constructor() { }
+  constructor(public popoverCtrl: PopoverController) { }
 
   ionViewDidLoad() { }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(TimelinePopoverPage);
+    popover.present({
+      ev: myEvent
+    });
+  }
 
 }

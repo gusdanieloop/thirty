@@ -11,9 +11,8 @@
     <div class="thirty-firm-title">
       <span>Alvorada Pub</span>
 
-      <ion-icon class="thirty-firm-more" name="more"></ion-icon>
+      <ion-icon class="thirty-firm-more" name="more" (click)="presentPopover($event)"></ion-icon>
     </div>
-
   </div>
 
   <ion-slides pager>
@@ -36,23 +35,24 @@
     </ion-slide>
   </ion-slides>
 
-<div class="thirty-content-footer">
-  <div class="thirty-rating">
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star-outline"></ion-icon>
+  <div class="thirty-content-footer">
+    <div class="thirty-rating">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <button class="thirty-button-description" ion-button full>Descrição</button>
   </div>
 
-    <button class="thirty-button-firm-description" ion-button full>Descrição</button>
+  <div class="thirty-content-header">
+    <div class="thirty-firm-title">
+      <span>Vera Night Club</span>
 
-  </div>
-
-  <div class="thirty-firm-title">
-    <span>Vera Night Club</span>
-
-    <ion-icon class="thirty-firm-more" name="more"></ion-icon>
+      <ion-icon class="thirty-firm-more" name="more" (click)="presentPopover($event)"></ion-icon>
+    </div>
   </div>
 
   <ion-slides pager>
@@ -75,12 +75,16 @@
     </ion-slide>
   </ion-slides>
 
-  <div class="thirty-rating">
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star-half"></ion-icon>
-    <ion-icon name="star-outline"></ion-icon>
+  <div class="thirty-content-footer">
+    <div class="thirty-rating">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-half"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <button class="thirty-button-description" ion-button full>Descrição</button>
   </div>
 
 </ion-content>
