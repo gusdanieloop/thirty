@@ -1,27 +1,30 @@
 page-timeline {
 
-
   ion-slides {
-    background-color: #8b7e98;
     height: 30%;
   }
 
+
   .thirty-content {
-    background-color: #8b7e98;
+    background-color: #43166f;
   }
 
   .thirty-button-description {
-    background-color: #4a2f6d;
+    background-color: #be7dff;
   }
 
   .thirty-button-more {
     background-color: transparent;
   }
 
+  .swiper-pagination-bullet-active {
+    background: #be7dff;
+  }
+
   .thirty-rating {
-    color: #f9f76a;
+    color: #ffc125;
     font-size: 30px;
-    height: 20%;
+    height: 15%;
     line-height: 30px;
     margin: 15px 0px 30px;
     text-align: center;
@@ -41,6 +44,8 @@ page-timeline {
   }
 
   .thirty-content-header {
+    color: #ffffff;
+    padding-bottom: 8px;
     text-align: center;
     width: 100%;
   }
