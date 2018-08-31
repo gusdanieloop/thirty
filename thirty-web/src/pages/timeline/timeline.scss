@@ -5,7 +5,12 @@ page-timeline {
   }
 
   .thirty-button-description {
-    background-color: #be7dff;
+    background-color: #ffffff;
+    color: #43166f;
+  }
+
+  .thirty-button-description:hover {
+    background: #be7dff !important;
   }
 
   .swiper-pagination-bullet-active {
@@ -31,7 +36,8 @@ page-timeline {
   }
 
   .thirty-content-footer {
-    height: 30%;
+    height: 15%;
+    margin-bottom: 15px;
   }
 
   .thirty-content-header {
