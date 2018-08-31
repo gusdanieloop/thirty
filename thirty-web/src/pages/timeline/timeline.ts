@@ -1,15 +1,21 @@
+import { CompanyDescriptionPage } from './../company-description/company-description';
 import { Component } from '@angular/core';
-import { IonicPage, PopoverController } from 'ionic-angular';
+
+import { PopoverController, NavController, NavParams } from 'ionic-angular';
+
 import { TimelinePopoverPage } from './timeline-popover/timeline-popover';
 
-@IonicPage()
 @Component({
   selector: 'page-timeline',
   templateUrl: 'timeline.html',
 })
 export class TimelinePage {
 
-  constructor(public popoverCtrl: PopoverController) { }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public popoverCtrl: PopoverController
+  ) { }
 
   ionViewDidLoad() { }
 
@@ -17,6 +23,12 @@ export class TimelinePage {
     let popover = this.popoverCtrl.create(TimelinePopoverPage);
     popover.present({
       ev: myEvent
+    });
+  }
+
+  getCompanyDescriptionPage(name) {
+    this.navCtrl.push(CompanyDescriptionPage.name, {
+      companyName: name
     });
   }
 

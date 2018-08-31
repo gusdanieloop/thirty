@@ -8,10 +8,10 @@
 <ion-content class="thirty-content" padding>
 
   <div class="thirty-content-header">
-    <div class="thirty-firm-title">
+    <div class="thirty-company-title">
       <span>Alvorada Pub</span>
 
-      <ion-icon class="thirty-firm-more" name="more" (click)="presentPopover($event)"></ion-icon>
+      <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
     </div>
   </div>
 
@@ -44,14 +44,14 @@
       <ion-icon name="star-outline"></ion-icon>
     </div>
 
-    <button class="thirty-button-description" ion-button full>Descrição</button>
+    <button class="thirty-button-description" ion-button full (click)="getCompanyDescriptionPage('Alvorada Pub')">Descrição</button>
   </div>
 
   <div class="thirty-content-header">
-    <div class="thirty-firm-title">
+    <div class="thirty-company-title">
       <span>Vera Night Club</span>
 
-      <ion-icon class="thirty-firm-more" name="more" (click)="presentPopover($event)"></ion-icon>
+      <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
     </div>
   </div>
 
@@ -84,7 +84,7 @@
       <ion-icon name="star-outline"></ion-icon>
     </div>
 
-    <button class="thirty-button-description" ion-button full>Descrição</button>
+    <button class="thirty-button-description" ion-button full (click)="getCompanyDescriptionPage('Vera Night Club')">Descrição</button>
   </div>
 
 </ion-content>
