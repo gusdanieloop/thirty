@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FilterPageModule } from '../pages/filter/filter.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
+import { RatingPageModule } from '../pages/rating/rating.module';
 import { TabbarFooterPageModule } from '../pages/tabbar-footer/tabbar-footer.module';
 import { TimelinePageModule } from '../pages/timeline/timeline.module';
 
@@ -20,6 +21,7 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
     IonicModule.forRoot(MyApp),
     SettingsPageModule,
     FilterPageModule,
+    RatingPageModule,
     TabbarFooterPageModule,
     TimelinePageModule,
   ],
