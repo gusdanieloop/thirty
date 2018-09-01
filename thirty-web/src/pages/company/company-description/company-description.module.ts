@@ -1,5 +1,5 @@
-import { NgModule, Input } from '@angular/core';
-import { IonicPageModule, NavController, NavParams } from 'ionic-angular';
+import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
 import { CompanyDescriptionPage } from './company-description';
 
 @NgModule({
