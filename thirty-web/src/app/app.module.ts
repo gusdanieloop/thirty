@@ -6,6 +6,9 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { FilterPageModule } from '../pages/filter/filter.module';
+import { SettingsPageModule } from '../pages/settings/settings.module';
+import { TabbarFooterPageModule } from '../pages/tabbar-footer/tabbar-footer.module';
 import { TimelinePageModule } from '../pages/timeline/timeline.module';
 
 @NgModule({
@@ -15,8 +18,10 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SettingsPageModule,
+    FilterPageModule,
+    TabbarFooterPageModule,
     TimelinePageModule,
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
