@@ -1,8 +1,8 @@
-import { CompanyDescriptionPage } from './../company-description/company-description';
 import { Component } from '@angular/core';
 
 import { PopoverController, NavController, NavParams } from 'ionic-angular';
 
+import { CompanyDescriptionPage } from './../company/company-description/company-description';
 import { TimelinePopoverPage } from './timeline-popover/timeline-popover';
 
 @Component({

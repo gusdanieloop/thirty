@@ -4,9 +4,24 @@ page-timeline {
     height: 30%;
   }
 
+  .thirty-avatar {
+    border-radius: 50%;
+    height: 30vh;
+    margin-left: 13vw;
+    position: relative;
+    width: 53vw;
+  }
+
+  .thirty-avatar:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
   .thirty-button-description {
-    background-color: #ffffff;
-    color: #43166f;
+    background-color: #43166f;
+    color: #ffffff;
+    margin-left: 30%;
   }
 
   .thirty-button-description:hover {
@@ -33,6 +48,7 @@ page-timeline {
   .thirty-company-title {
     font-size: 30px;
     width: 90%;
+    color: #43166f;
   }
 
   .thirty-content-footer {
@@ -41,7 +57,7 @@ page-timeline {
   }
 
   .thirty-content-header {
-    color: #ffffff;
+    color: #43166f;
     padding-bottom: 8px;
     text-align: center;
     width: 100%;

@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
@@ -7,84 +6,55 @@
 
 <ion-content class="thirty-content" padding>
 
-  <div class="thirty-content-header">
-    <div class="thirty-company-title">
-      <span>Alvorada Pub</span>
+  <ion-card>
 
-      <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
+    <ion-card-title>
+      <div class="thirty-content-header">
+        <div class="thirty-company-title">
+          <span>Alvorada Pub</span>
+
+          <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
+        </div>
+      </div>
+    </ion-card-title>
+
+    <img class="thirty-avatar" src="./../../assets/image/example/pub1.jpg">
+
+    <div class="thirty-content-footer">
+      <div class="thirty-rating">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </div>
+
+      <button class="thirty-button-description" ion-button (click)="getCompanyDescriptionPage('Alvorada Pub')">Descrição</button>
     </div>
-  </div>
+  </ion-card>
 
-  <ion-slides pager>
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub1.jpg">
+  <ion-card>
+    <div class="thirty-content-header">
+      <div class="thirty-company-title">
+        <span>Vera Night Club</span>
+
+        <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
       </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub1.1.jpg">
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub2.2.jpg">
-      </div>
-    </ion-slide>
-  </ion-slides>
-
-  <div class="thirty-content-footer">
-    <div class="thirty-rating">
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star-outline"></ion-icon>
-    </div>
-
-    <button class="thirty-button-description" ion-button full (click)="getCompanyDescriptionPage('Alvorada Pub')">Descrição</button>
-  </div>
-
-  <div class="thirty-content-header">
-    <div class="thirty-company-title">
-      <span>Vera Night Club</span>
-
-      <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
-    </div>
-  </div>
-
-  <ion-slides pager>
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub2.jpg">
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub2.1.jpg">
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div class="thirty-avatar">
-        <img src="./../../assets/image/example/pub2.2.jpg">
-      </div>
-    </ion-slide>
-  </ion-slides>
-
-  <div class="thirty-content-footer">
-    <div class="thirty-rating">
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star-half"></ion-icon>
-      <ion-icon name="star-outline"></ion-icon>
     </div>
 
-    <button class="thirty-button-description" ion-button full (click)="getCompanyDescriptionPage('Vera Night Club')">Descrição</button>
-  </div>
+    <img class="thirty-avatar" src="./../../assets/image/example/pub2.jpg">
+
+    <div class="thirty-content-footer">
+      <div class="thirty-rating">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </div>
+
+      <button class="thirty-button-description" ion-button (click)="getCompanyDescriptionPage('Vera Night Club')">Descrição</button>
+    </div>
+  </ion-card>
 
 </ion-content>

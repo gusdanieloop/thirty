@@ -10,7 +10,7 @@ import { TimelinePopoverPageModule } from './timeline-popover/timeline-popover.m
   ],
   imports: [
     IonicPageModule.forChild(TimelinePage),
-    TimelinePopoverPageModule
+    TimelinePopoverPageModule,
   ],
   exports: [
     TimelinePage,
