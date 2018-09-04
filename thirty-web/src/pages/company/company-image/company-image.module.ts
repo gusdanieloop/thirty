@@ -9,5 +9,8 @@ import { CompanyImagePage } from './company-image';
   imports: [
     IonicPageModule.forChild(CompanyImagePage),
   ],
+  exports: [
+    CompanyImagePage,
+  ]
 })
 export class CompanyImagePageModule {}
