@@ -18,21 +18,11 @@ page-timeline {
     padding-bottom: 100%;
   }
 
-  .thirty-button-description {
-    background-color: #43166f;
-    color: #ffffff;
-    margin-left: 30%;
-  }
-
-  .thirty-button-description:hover {
-    background: #be7dff !important;
-  }
-
   .swiper-pagination-bullet-active {
     background: #be7dff;
   }
 
-  .thirty-rating {
+  .thirty-timeline-rating {
     color: #ffc125;
     font-size: 30px;
     height: 15%;
@@ -61,6 +51,10 @@ page-timeline {
     padding-bottom: 8px;
     text-align: center;
     width: 100%;
+  }
+
+  .thirty-timeline-button {
+    left: 24%;
   }
 
 }
