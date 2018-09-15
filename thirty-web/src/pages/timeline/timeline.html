@@ -4,24 +4,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="thirty-content" padding>
+<ion-content class="thirty-content-container" padding>
 
-  <ion-card>
+  <ion-card class="thirty-content">
 
     <ion-card-title>
       <div class="thirty-content-header">
-        <div class="thirty-company-title">
-          <span>Alvorada Pub</span>
-
-          <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
-        </div>
+        <div class="thirty-content-header-title">Alvorada</div>
+        <div class="thirty-content-header-subtitle">Pub Night Club</div>
       </div>
     </ion-card-title>
 
-    <img class="thirty-avatar" src="./../../assets/image/example/pub1.jpg">
+    <img src="./../../assets/image/example/pub1.jpg">
 
-    <div class="thirty-content-footer">
-      <div class="thirty-timeline-rating">
+    <div class="thirty-content-rating">
+      <div class="thirty-content-rating-stars">
         <ion-icon name="star"></ion-icon>
         <ion-icon name="star"></ion-icon>
         <ion-icon name="star"></ion-icon>
@@ -29,31 +26,44 @@
         <ion-icon name="star-outline"></ion-icon>
       </div>
 
-      <button class="thirty-button thirty-timeline-button" ion-button (click)="getCompanyDescriptionPage('Alvorada Pub')">Descrição</button>
-    </div>
-  </ion-card>
-
-  <ion-card>
-    <div class="thirty-content-header">
-      <div class="thirty-company-title">
-        <span>Vera Night Club</span>
-
-        <ion-icon class="thirty-company-actions" name="more" (click)="presentPopover($event)"></ion-icon>
+      <div class="thirty-content-rating-description">
+        <span>
+          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+        </span>
       </div>
     </div>
-
-    <img class="thirty-avatar" src="./../../assets/image/example/pub2.jpg">
 
     <div class="thirty-content-footer">
-      <div class="thirty-timeline-rating">
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star-half"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
+      <div class="thirty-content-footer-button">
+        <button ion-button icon-start clear small
+          class="thirty-content-footer-button-icon"
+          (click)="getCompanyRoute()">
+          <ion-icon name="pin"></ion-icon>
+        </button>
+
+        <div class="thirty-content-footer-button-label">Como chegar</div>
       </div>
 
-      <button class="thirty-button thirty-timeline-button" ion-button (click)="getCompanyDescriptionPage('Vera Night Club')">Descrição</button>
+      <div class="thirty-content-footer-button">
+        <button ion-button icon-start clear
+          class="thirty-content-footer-button-icon"
+          (click)="getCompanyMenu()">
+          <ion-icon name="book"></ion-icon>
+        </button>
+
+        <div class="thirty-content-footer-button-label">Cardápio</div>
+      </div>
+
+      <div class="thirty-content-footer-button">
+        <button ion-button icon-start clear
+          class="thirty-content-footer-button-icon"
+          (click)="getCompanyImages()">
+          <ion-icon name="images"></ion-icon>
+        </button>
+
+        <div class="thirty-content-footer-button-label">Mais fotos</div>
+      </div>
+
     </div>
   </ion-card>
 

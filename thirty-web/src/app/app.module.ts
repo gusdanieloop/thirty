@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { CompanyDescriptionPageModule } from '../pages/company/company-description/company-description.module';
 import { CompanyImagePageModule } from '../pages/company/company-image/company-image.module';
 import { CompanyMenuPageModule } from './../pages/company/company-menu/company-menu.module';
 import { CompanyRoutePageModule } from './../pages/company/company-route/company-route.module';
@@ -23,7 +22,6 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    CompanyDescriptionPageModule,
     CompanyImagePageModule,
     CompanyMenuPageModule,
     CompanyRoutePageModule,

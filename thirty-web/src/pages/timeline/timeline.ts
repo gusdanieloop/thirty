@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
-import { PopoverController, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { CompanyDescriptionPage } from './../company/company-description/company-description';
-import { TimelinePopoverPage } from './timeline-popover/timeline-popover';
+import { CompanyImagePage } from '../company/company-image/company-image';
+import { CompanyMenuPage } from '../company/company-menu/company-menu';
+import { CompanyRoutePage } from '../company/company-route/company-route';
+import { RatingPage } from '../rating/rating';
 
 @Component({
   selector: 'page-timeline',
@@ -11,25 +13,24 @@ import { TimelinePopoverPage } from './timeline-popover/timeline-popover';
 })
 export class TimelinePage {
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public popoverCtrl: PopoverController
-  ) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() { }
 
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(TimelinePopoverPage);
-    popover.present({
-      ev: myEvent
-    });
+  getRatingPage() {
+    this.navCtrl.push(RatingPage);
   }
 
-  getCompanyDescriptionPage(name) {
-    this.navCtrl.push(CompanyDescriptionPage.name, {
-      companyName: name
-    });
+  getCompanyRoute() {
+    this.navCtrl.push(CompanyRoutePage);
+  }
+
+  getCompanyMenu() {
+    this.navCtrl.push(CompanyMenuPage);
+  }
+
+  getCompanyImages() {
+    this.navCtrl.push(CompanyImagePage);
   }
 
 }

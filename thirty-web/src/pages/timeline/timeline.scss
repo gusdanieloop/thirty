@@ -4,57 +4,81 @@ page-timeline {
     height: 30%;
   }
 
-  .thirty-avatar {
-    border-radius: 50%;
-    height: 30vh;
-    margin-left: 13vw;
-    position: relative;
-    width: 53vw;
-  }
+  // .thirty-content-avatar {
+  //   border-radius: 50%;
+  //   height: 72vw;
+  //   left: calc(50% - 36vw);
+  //   position: relative;
+  //   width: 72vw;
+  // }
 
-  .thirty-avatar:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
-
-  .swiper-pagination-bullet-active {
-    background: #be7dff;
-  }
-
-  .thirty-timeline-rating {
-    color: #ffc125;
-    font-size: 30px;
-    height: 15%;
-    line-height: 30px;
-    margin: 15px 0px 30px;
-    text-align: center;
-  }
-
-  .thirty-company-actions {
-    float: right;
-  }
-
-  .thirty-company-title {
-    font-size: 30px;
-    width: 90%;
-    color: #43166f;
-  }
-
-  .thirty-content-footer {
-    height: 30%;
-    margin-bottom: 15px;
-  }
+  // .thirty-content-avatar:after {
+  //   content: "";
+  //   display: block;
+  //   padding-bottom: 100%;
+  // }
 
   .thirty-content-header {
-    color: #43166f;
-    padding-bottom: 8px;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .thirty-content-header-title {
+    color: #54003d;
+    font-size: 32px;
     text-align: center;
     width: 100%;
   }
 
-  .thirty-timeline-button {
-    left: 24%;
+  .thirty-content-header-subtitle {
+    color: #c67100;
+    font-size: 16px;
+  }
+
+  .thirty-content-rating {
+    height: 30%;
+    padding: 8px;
+  }
+
+  .thirty-content-rating-stars {
+    color: #ffa000;
+    font-size: 30px;
+    height: 15%;
+    line-height: 30px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .thirty-content-rating-description {
+    text-align: center;
+  }
+
+  .thirty-content-footer {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0 8px 8px 8px;
+  }
+
+  .thirty-content-footer-button {
+    display: table-cell;
+    text-align: center;
+  }
+
+  .thirty-content-footer-button-label,
+  .thirty-content-footer-button-icon {
+    color: #803360;
+  }
+
+  .thirty-content-footer-button-icon {
+    height: 16px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .thirty-content-footer-button-label {
+    font-size: 12px;
+    width: 100%;
   }
 
 }

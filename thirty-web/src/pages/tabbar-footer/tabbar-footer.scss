@@ -2,6 +2,10 @@ page-tabbar-footer {
 
 }
 
-.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
-  color: #43166f;
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-wp .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-wp .tab-button[aria-selected=true] {
+  color: #54003d;
+  border-bottom-color: #54003d;
 }
