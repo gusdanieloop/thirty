@@ -41,12 +41,14 @@ page-timeline {
   }
 
   .thirty-content-rating-stars {
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .thirty-content-rating-stars-button{
     color: #ffa000;
     font-size: 30px;
     height: 15%;
-    line-height: 30px;
-    margin-bottom: 8px;
-    text-align: center;
   }
 
   .thirty-content-rating-description {
