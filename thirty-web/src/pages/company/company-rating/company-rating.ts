@@ -3,12 +3,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-rating',
-  templateUrl: 'rating.html',
+  selector: 'page-company-rating',
+  templateUrl: 'company-rating.html',
 })
-export class RatingPage {
+export class CompanyRatingPage {
+
+  rating: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.rating = 0;
+
   }
 
   ionViewDidLoad() {

@@ -2,6 +2,21 @@ page-rating {
 
 }
 
+.range-bar,
+.range-bar-active {
+  color: transparent !important;
+  background-color: transparent !important;
+}
+
+.range-knob {
+  // box-shadow: none !important;
+}
+
+.tst {
+  padding: 0 32px;
+  height: 1;
+}
+
 .thirty-rating-container {
   height: auto;
 }
