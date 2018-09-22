@@ -5,7 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CompanyImagePage } from '../company/company-image/company-image';
 import { CompanyMenuPage } from '../company/company-menu/company-menu';
 import { CompanyRoutePage } from '../company/company-route/company-route';
-import { RatingPage } from '../rating/rating';
+import { CompanyRatingPage } from '../company/company-rating/company-rating';
 
 @Component({
   selector: 'page-timeline',
@@ -18,7 +18,7 @@ export class TimelinePage {
   ionViewDidLoad() { }
 
   getRatingPage() {
-    this.navCtrl.push(RatingPage);
+    this.navCtrl.push(CompanyRatingPage);
   }
 
   getCompanyRoute() {
