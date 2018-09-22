@@ -1,30 +1,45 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Configurações</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content class="thirty-content-container" padding>
+  <ion-card class="thirty-content">
 
-  <ion-list class="thirty-content-list">
     <ion-item>
-      <ion-icon class="thirty-content-list-tem" name="person" item-start></ion-icon>
-        Editar do perfíl
+      <ion-avatar item-start>
+        <img src="./../../assets/image/example/avatar.jpg">
+      </ion-avatar>
+      <button ion-button icon-start clear
+        class="thirty-content-settings-button-avatar">
+        Alterar imagem
+      </button>
     </ion-item>
-    <ion-item>
-      <ion-icon class="thirty-content-list-tem" name="flash" item-start></ion-icon>
-        Descontos disponíveis
-    </ion-item>
-    <ion-item>
-      <ion-icon class="thirty-content-list-tem" name="pie" item-start></ion-icon>
-        Média de consumo
-    </ion-item>
-    <ion-item>
-      <ion-icon class="thirty-content-list-tem" name="log-out" item-start></ion-icon>
+
+    <ion-list class="thirty-content-list">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" value="Mateus José Milczewski"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input type="text" value="mateus.j@mail.com"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password" value="123qwe"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button icon-start clear class="thirty-content-footer-button-icon">
+      <ion-item>
+        <ion-icon name="log-out" item-start></ion-icon>
         Sair
-    </ion-item>
-  </ion-list>
+      </ion-item>
+    </button>
 
+  </ion-card>
 </ion-content>
