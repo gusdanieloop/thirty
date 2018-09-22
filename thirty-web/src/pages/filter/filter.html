@@ -6,7 +6,46 @@
 
 </ion-header>
 
-
 <ion-content class="thirty-content-container" padding>
+
+  <ion-list class="thirty-content-list">
+    <ion-item>
+      <ion-icon class="thirty-content-list-tem" name="star" item-start></ion-icon>
+      <ion-label>Avaliações</ion-label>
+      <ion-select [(ngModel)]="rating">
+        <ion-option value="r1">1 estrela</ion-option>
+        <ion-option value="r2">2 estrelas</ion-option>
+        <ion-option value="r3">3 estrelas</ion-option>
+        <ion-option value="r4">4 estrelas</ion-option>
+        <ion-option value="r5">5 estrelas</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon class="thirty-content-list-tem" name="bookmark" item-start></ion-icon>
+      <ion-label>Tipo de estabelecimento</ion-label>
+      <ion-select multiple="true" [(ngModel)]="companyType">
+        <ion-option value="t1">Pub</ion-option>
+        <ion-option value="t2">Restaurante</ion-option>
+        <ion-option value="t3">Coffee House</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon class="thirty-content-list-tem" name="stats" item-start></ion-icon>
+      <ion-label>Média de consumo</ion-label>
+        <ion-select [(ngModel)]="averageSpend">
+          <ion-option value="a1">R$30</ion-option>
+          <ion-option value="a2">R$60</ion-option>
+          <ion-option value="a3">R$90</ion-option>
+          <ion-option value="a4">R$120</ion-option>
+          <ion-option value="a5">R$150+</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon class="thirty-content-list-tem" name="pin" item-start></ion-icon>
+        Alterar região
+    </ion-item>
+  </ion-list>
 
 </ion-content>

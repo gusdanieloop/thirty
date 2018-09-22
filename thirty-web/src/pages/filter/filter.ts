@@ -8,6 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FilterPage {
 
+  averageSpend;
+  companyType;
+  rating;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
