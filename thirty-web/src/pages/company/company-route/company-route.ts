@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LaunchNavigator } from '@ionic-native/launch-navigator';
+// import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 @IonicPage()
 @Component({
@@ -19,8 +19,7 @@ export class CompanyRoutePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     // private _launchNavigator: LaunchNavigator
-    ) {
-  }
+  ) { }
 
   // this.launchNavigator.navigate('Toronto, ON', options)
   // .then(
