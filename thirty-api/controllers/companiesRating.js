@@ -7,15 +7,22 @@ module.exports = function(app) {
 
     app.post('/companies/companyRating', function(req, res) {
         var rating = req.body;
-        console.log(rating);
         
-        rating.status = ' CREATED';
+        rating.status = 'CREATED';
         rating.date = new Date;
 
-        var connection = new app.persistence.connectionFactory;
-        // var ratingDAO = new app.persistence;
+        var connection = app.persistence.connectionFactory();
+        var ratingDao = new app.persistence.CompanyRatingDao(connection);
 
-        res.send('OK.')
+        ratingDao.insert(rating, function(error, result){
+            if (error) {
+                res.send(error);
+            } else {
+                console.log('Avaliação inserida com sucesso.');
+                res.json(rating)
+            }
+        });
+
     });
 
 }

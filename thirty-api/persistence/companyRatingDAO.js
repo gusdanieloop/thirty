@@ -1,15 +1,19 @@
-function CompanyRatingDAO(connection) {
+function CompanyRatingDao(connection) {
     this._connection = connection;
 }
 
-CompanyRatingDAO.prototype.insert = function(company, callback) {
-    this._connection.query('INSER INTO companies SET ?', company, callback);
+CompanyRatingDao.prototype.insert = function(rating, callback) {
+    this._connection.query('INSERT INTO companies SET ?', rating, callback);
 }
 
-CompanyRatingDAO.prototype.select = function(callback) {
+CompanyRatingDao.prototype.select = function(callback) {
     this._connection.query('SELECT * FROM companies', callback);
 }
 
-CompanyRatingDAO.prototype.selectById = function(id, callback) {
-    this._connection.query('SELECT * FROM companies WHERE id = ', id, callback);
+CompanyRatingDao.prototype.selectById = function(id, callback) {
+    this._connection.query('SELECT * FROM companies WHERE id = ?', [id], callback);
+}
+
+module.exports = function() {
+    return CompanyRatingDao;
 }
