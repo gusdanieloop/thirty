@@ -25,6 +25,7 @@ page-rating {
   color: #54003d;
 }
 
+.thirty-rating-clickable,
 .thirty-rating {
   color: #ffa000;
   font-size: 30px;
@@ -32,6 +33,10 @@ page-rating {
   line-height: 30px;
   margin-top: 16px;
   text-align: center;
+}
+
+.thirty-rating-clickable {
+  cursor: pointer;
 }
 
 .thirty-company-rating-button {
