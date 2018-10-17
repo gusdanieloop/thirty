@@ -1,7 +1,7 @@
+import { ServeHttpServiceProvider } from './../../../providers/serve-http-service/serve-http-service';
 import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { CompanyRatingServiceProvider } from '../../../providers/company-rating-service/company-rating-service';
 
 import { Rating } from './company-rating.object';
 
@@ -21,20 +21,25 @@ export class CompanyRatingPage {
 
   stars: Array<string>;
   rating: Rating;
+  ratingList: Rating[];
+
+  private _uriPathDao: string = '/companies/companyRating';
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _ratingService: CompanyRatingServiceProvider
+    private _serverHttp: ServeHttpServiceProvider
   ) {
     this.rating = new Rating();
     this.rating.stars = 0;
     this.stars = ZERO_STAR;
+    this.checkForm();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RatingPage');
+    this.getRatings();
+    console.log('###', this.ratingList);
   }
 
   checkForm() {
@@ -43,6 +48,30 @@ export class CompanyRatingPage {
     }
 
     return true;
+  }
+
+  getRatings() {
+    this._serverHttp.httpRead(this._uriPathDao)
+    .subscribe(
+      (ratings: Rating[]) => ratings.length > 0 ? this.ratingList = { ...ratings } : this.ratingList = undefined,
+      error => alert('Erro!')
+    );
+  }
+
+  updateRating() {
+    this._serverHttp.httpUpdate(this._uriPathDao, this.rating)
+    .subscribe(
+      () => alert('Ok'),
+      () => alert('BAD')
+    );
+  }
+
+  sendRating() {
+    this._serverHttp.httpCreate(this._uriPathDao, this.rating)
+      .subscribe(
+        () => alert('Ok'),
+        () => alert('BAD')
+      );
   }
 
   selectStarsRating(starNumber) {

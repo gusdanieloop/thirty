@@ -48,7 +48,10 @@
 
     <button ion-button
       class="thirty-button thirty-company-rating-button"
-      [disabled]="checkForm()">Enviar</button>
+      [disabled]="checkForm()"
+      (click)="sendRating()">
+      Enviar
+    </button>
 
   </ion-card>
 
