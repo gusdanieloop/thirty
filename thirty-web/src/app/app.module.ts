@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -14,6 +15,7 @@ import { FilterPageModule } from '../pages/filter/filter.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { TabbarFooterPageModule } from '../pages/tabbar-footer/tabbar-footer.module';
 import { TimelinePageModule } from '../pages/timeline/timeline.module';
+import { ServeHttpServiceProvider } from '../providers/serve-http-service/serve-http-service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
     CompanyRoutePageModule,
     SettingsPageModule,
     FilterPageModule,
+    HttpClientModule,
     TabbarFooterPageModule,
     TimelinePageModule,
   ],
@@ -36,9 +39,12 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
     MyApp,
   ],
   providers: [
+    HttpClientModule,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClient,
+    ServeHttpServiceProvider
   ]
 })
 export class AppModule {}
