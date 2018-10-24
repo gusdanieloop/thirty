@@ -6,8 +6,8 @@ CompanyRatingDao.prototype.create = function(rating, callback) {
     this._connection.query('INSERT INTO rating SET ?', rating, callback);
 }
 
-CompanyRatingDao.prototype.ready = function(callback) {
-    this._connection.query('SELECT * FROM rating', callback);
+CompanyRatingDao.prototype.ready = function(error, callback) {
+    this._connection.query('SELECT * FROM rating', error, callback);
 }
 
 CompanyRatingDao.prototype.readyById = function(id, callback) {

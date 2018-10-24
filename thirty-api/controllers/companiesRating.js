@@ -8,19 +8,17 @@ module.exports = function(app) {
     app.get('/companies/companyRating', function(req, res) {
         var connection = app.persistence.connectionFactory();
         var ratingDao = new app.persistence.CompanyRatingDao(connection);
-
-        ratingDao.ready(rating, function(error){
+        ratingDao.ready(function(error, result){
             if (error) {
                 res.status(500).send(error);
                 return;
             }
-            console.log('Avaliação removida com sucesso!');
-            res.status(204).send(rating);
-        })
+            console.log('Avaliações encontradas!', result);
+            res.status(200).send(result);
+        });
     });
 
-    app.post('/companies/companyRating', function(req, res) {
-
+    app.post('/companies/companyRating', function(req, res) {        
         console.log('Ok', req);
         
         req.assert("stars", "Por favor informe uma quantidade de estrelas.").notEmpty();
@@ -88,7 +86,7 @@ module.exports = function(app) {
             console.log('Avaliação confirmada!');
             res.send(rating);
         })        
-        });
+    });
 
     app.delete('/companies/companyRating/:id', function(req, res) {
         var rating = {};
@@ -113,3 +111,4 @@ module.exports = function(app) {
 }
 
 // curl http://localhost:3000/companies/companyRating -X POST -v -H "Content-type: application/json" -d @files/companies.json; echo
+// curl http://localhost:3000/companies/companyRating/id -X DELETE -v
