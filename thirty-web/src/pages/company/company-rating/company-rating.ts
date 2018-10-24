@@ -1,7 +1,7 @@
-import { ServeHttpServiceProvider } from './../../../providers/serve-http-service/serve-http-service';
 import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ServeHttpServiceProvider } from './../../../providers/serve-http-service/serve-http-service';
 
 import { Rating } from './company-rating.object';
 
@@ -34,12 +34,11 @@ export class CompanyRatingPage {
     this.rating = new Rating();
     this.rating.stars = 0;
     this.stars = ZERO_STAR;
-    this.checkForm();
   }
 
   ionViewDidLoad() {
     this.getRatings();
-    console.log('###', this.ratingList);
+    this.checkForm();
   }
 
   checkForm() {
@@ -53,8 +52,9 @@ export class CompanyRatingPage {
   getRatings() {
     this._serverHttp.httpRead(this._uriPathDao)
     .subscribe(
-      (ratings: Rating[]) => ratings.length > 0 ? this.ratingList = { ...ratings } : this.ratingList = undefined,
-      error => alert('Erro!')
+      // (list) => list.length > 0 ? this.ratingList = { ...list } : this.ratingList = undefined,
+      (list: Rating[]) => this.ratingList = list,
+      error => alert('Ocorreu um erro.')
     );
   }
 
@@ -69,8 +69,16 @@ export class CompanyRatingPage {
   sendRating() {
     this._serverHttp.httpCreate(this._uriPathDao, this.rating)
       .subscribe(
-        () => alert('Ok'),
-        () => alert('BAD')
+        () => {
+          alert('Ok');
+          this.rating = new Rating();
+          this.getRatings();
+          return;
+        },
+        () => {
+          alert('BAD');
+          return;
+        }
       );
   }
 
@@ -99,6 +107,23 @@ export class CompanyRatingPage {
       default:
         this.stars = ZERO_STAR;
         break;
+    }
+  }
+
+  getStarsRating(starNumber) {
+    switch (starNumber) {
+      case 1:
+        return this.stars = ONE_STAR;
+      case 2:
+        return this.stars = TWO_STARS;
+      case 3:
+        return this.stars = TRHEE_STARS;
+      case 4:
+        return this.stars = FOUR_STARS;
+      case 5:
+        return this.stars = FIVE_STARS;
+      default:
+        return this.stars = ZERO_STAR;
     }
   }
 

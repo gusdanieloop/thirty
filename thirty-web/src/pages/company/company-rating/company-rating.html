@@ -55,7 +55,7 @@
 
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngFor="let rating of ratingList">
 
     <ion-item>
       <ion-avatar item-start>
@@ -74,8 +74,7 @@
 
     <ion-card-content>
       <p>
-        Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine...
-        out of a DeLorean?! Whoa. This is heavy.
+        {{ rating.comment }}
       </p>
     </ion-card-content>
 
