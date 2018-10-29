@@ -64,19 +64,17 @@
       <h2>Paul Luther</h2>
     </ion-item>
 
-    <div class="thirty-rating">
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star"></ion-icon>
-      <ion-icon name="star-outline"></ion-icon>
-    </div>
-
     <ion-card-content>
       <p>
         {{ rating.comment }}
       </p>
     </ion-card-content>
+
+    <div class="thirty-user-rating">
+      <ion-icon name="star"></ion-icon>
+      <span class="thirty-user-rating-count">{{ rating.stars }}</span>
+    </div>
+
 
   </ion-card>
 </ion-content>

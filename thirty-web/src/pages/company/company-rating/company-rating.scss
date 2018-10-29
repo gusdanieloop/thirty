@@ -2,21 +2,6 @@ page-rating {
 
 }
 
-.range-bar,
-.range-bar-active {
-  color: transparent !important;
-  background-color: transparent !important;
-}
-
-.range-knob {
-  // box-shadow: none !important;
-}
-
-.tst {
-  padding: 0 32px;
-  height: 1;
-}
-
 .thirty-rating-container {
   height: auto;
 }
@@ -26,13 +11,28 @@ page-rating {
 }
 
 .thirty-rating-clickable,
-.thirty-rating {
+.thirty-rating,
+.thirty-user-rating {
   color: #ffa000;
-  font-size: 30px;
+  font-size: 1.5em;
   height: 15%;
   line-height: 30px;
+}
+
+.thirty-rating-clickable,
+.thirty-rating {
   margin-top: 16px;
   text-align: center;
+}
+
+.thirty-user-rating {
+  padding: 0 16px 16px 16px;
+  text-align: right;
+}
+
+.thirty-user-rating-count {
+  color: black;
+  font-size: 1em;
 }
 
 .thirty-rating-clickable {

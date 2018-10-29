@@ -110,21 +110,4 @@ export class CompanyRatingPage {
     }
   }
 
-  getStarsRating(starNumber) {
-    switch (starNumber) {
-      case 1:
-        return this.stars = ONE_STAR;
-      case 2:
-        return this.stars = TWO_STARS;
-      case 3:
-        return this.stars = TRHEE_STARS;
-      case 4:
-        return this.stars = FOUR_STARS;
-      case 5:
-        return this.stars = FIVE_STARS;
-      default:
-        return this.stars = ZERO_STAR;
-    }
-  }
-
 }
