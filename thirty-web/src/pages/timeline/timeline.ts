@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
+import { ServeHttpServiceProvider } from '../../providers/serve-http-service/serve-http-service';
+
+import { Company } from './company.object';
 import { CompanyImagePage } from '../company/company-image/company-image';
 import { CompanyMenuPage } from '../company/company-menu/company-menu';
-import { CompanyRoutePage } from '../company/company-route/company-route';
 import { CompanyRatingPage } from '../company/company-rating/company-rating';
+import { CompanyRoutePage } from '../company/company-route/company-route';
 
 @Component({
   selector: 'page-timeline',
@@ -13,12 +16,26 @@ import { CompanyRatingPage } from '../company/company-rating/company-rating';
 })
 export class TimelinePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  companyList: Company[];
 
-  ionViewDidLoad() { }
+  private _uriPathDao: string = '/companies/companyDetail';
 
-  getRatingPage() {
-    this.navCtrl.push(CompanyRatingPage);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _serverHttp: ServeHttpServiceProvider
+  ) { }
+
+  ionViewDidLoad() {
+    this.getCompanies();
+  }
+
+  getCompanies() {
+    this._serverHttp.httpRead(this._uriPathDao)
+    .subscribe(
+      (list: Company[]) => this.companyList = list,
+      error => alert('Ocorreu um erro.')
+    );
   }
 
   getCompanyRoute() {
@@ -31,6 +48,10 @@ export class TimelinePage {
 
   getCompanyImages() {
     this.navCtrl.push(CompanyImagePage);
+  }
+
+  getRatingPage() {
+    this.navCtrl.push(CompanyRatingPage);
   }
 
 }

@@ -6,12 +6,12 @@
 
 <ion-content class="thirty-content-container" padding>
 
-  <ion-card class="thirty-content">
+  <ion-card *ngFor="let company of companyList" class="thirty-content">
 
     <ion-card-title>
       <div class="thirty-content-header">
-        <div class="thirty-content-header-title">Alvorada</div>
-        <div class="thirty-content-header-subtitle">Pub Night Club</div>
+        <div class="thirty-content-header-title">{{ company.main_name }}</div>
+        <div class="thirty-content-header-subtitle">{{ company.secondary_name }}</div>
       </div>
     </ion-card-title>
 
@@ -33,40 +33,43 @@
 
       <div class="thirty-content-rating-description">
         <span>
-          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+          {{ company.description }}
         </span>
       </div>
     </div>
 
     <div class="thirty-content-footer">
-      <div class="thirty-content-footer-button">
+      <div class="thirty-content-footer-button"
+        (click)="getCompanyMenu()">
         <button ion-button icon-start clear
-          class="thirty-content-footer-button-icon"
-          (click)="getCompanyMenu()">
+          class="thirty-content-footer-button-icon">
           <ion-icon name="book"></ion-icon>
         </button>
+
         <div class="thirty-content-footer-button-label">Cardápio</div>
       </div>
 
-      <div class="thirty-content-footer-button">
+      <div class="thirty-content-footer-button"
+        (click)="getCompanyRoute()">
         <button ion-button icon-start clear small
-          class="thirty-content-footer-button-icon"
-          (click)="getCompanyRoute()">
+          class="thirty-content-footer-button-icon">
           <ion-icon name="pin"></ion-icon>
         </button>
+
         <div class="thirty-content-footer-button-label">Como chegar</div>
       </div>
 
-      <div class="thirty-content-footer-button">
+      <div class="thirty-content-footer-button"
+        (click)="getCompanyImages()">
         <button ion-button icon-start clear
-          class="thirty-content-footer-button-icon"
-          (click)="getCompanyImages()">
+          class="thirty-content-footer-button-icon">
           <ion-icon name="images"></ion-icon>
         </button>
+
         <div class="thirty-content-footer-button-label">Mais fotos</div>
       </div>
-
     </div>
+
   </ion-card>
 
 </ion-content>
