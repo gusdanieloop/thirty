@@ -5,9 +5,9 @@ module.exports = function(app) {
         res.send('200 - OK!');
     });
 
-    app.get('/companies/companyRating', function(req, res) {
+    app.get('/companies/companyDetail', function(req, res) {
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyRatingDao(connection);
+        var ratingDao = new app.persistence.CompanyDetailDao(connection);
         ratingDao.ready(function(error, result){
             if (error) {
                 res.status(500).send(error);
@@ -17,11 +17,16 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/companies/companyRating', function(req, res) {        
-        console.log('Ok', req);
-        
-        req.assert("stars", "Por favor informe uma quantidade de estrelas.").notEmpty();
-        req.assert("comment", "Seu comentário é importante para nós.").notEmpty();
+    app.post('/companies/companyDetail', function(req, res) {
+        console.log('Processando o cadastramento de uma nova companhia.');
+
+        req.assert("main_name", "Por favor informe uma quantidade de estrelas.").notEmpty();
+        req.assert("secondary_name", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("address", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("address_number", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("city", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("company_type", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("description", "Seu comentário é importante para nós.").notEmpty();
 
         var err = req.validationErrors();
 
@@ -31,33 +36,31 @@ module.exports = function(app) {
             return;
         }
         var rating = req.body;
-        console.log('Processando uma requisicao de uma nova avaliação.');
         
-        // rating.status = 'CREATED';
         rating.register_date = new Date;
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyRatingDao(connection);
+        var ratingDao = new app.persistence.CompanyDetailDao(connection);
 
         ratingDao.create(rating, function(error, result) {
             if (error) {
-                console.log('Erro ao inserir avaliação.' + error);
+                console.log('Erro ao inserir companhia.' + error);
                 res.status(500).send(error);
             } else {
                 rating.id = result.insertId;
                 console.log('Avaliação inserida com sucesso.');
-                res.location('/companies/companyRating/' + rating.id);
+                res.location('/companies/companyDetail/' + rating.id);
                 var response = {
                     rating_content: rating,
                     links: [
                         {
-                            href: 'http://localhost:3000/companies/' + rating.id,
-                            rel: 'Confirm',
+                            href: 'http://localhost:3000/companies/companyDetail/' + rating.id,
+                            rel: 'Update',
                             method: 'PUT'
                         },
                         {
-                            href: 'http://localhost:3000/companies/' + rating.id,
-                            rel: 'Cancel',
+                            href: 'http://localhost:3000/companies/companyDetail/' + rating.id,
+                            rel: 'Delete',
                             method: 'DELETE'
                         }
                     ]
@@ -68,46 +71,41 @@ module.exports = function(app) {
 
     });
     
-    app.put('/companies/companyRating/:id', function(req, res) {
+    app.put('/companies/companyDetail/:id', function(req, res) {
         var rating = {};
         var id = req.params.id;
         rating.id = id;
-        // rating.status = 'CONFIRMED';
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyRatingDao(connection);
+        var ratingDao = new app.persistence.CompanyDetailDao(connection);
 
         ratingDao.update(rating, function(error){
             if (error) {
                 res.status(500).send(error);
                 return;
             }
-            console.log('Avaliação confirmada!');
+            console.log('Companhia atualizada com sucesso!');
             res.send(rating);
         })        
     });
 
-    app.delete('/companies/companyRating/:id', function(req, res) {
+    app.delete('/companies/companyDetail/:id', function(req, res) {
         var rating = {};
         var id = req.params.id;
 
         rating.id = id;
-        // rating.status = 'CANCELED';
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyRatingDao(connection);
+        var ratingDao = new app.persistence.CompanyDetailDao(connection);
 
         ratingDao.delete(rating, function(error){
             if (error) {
                 res.status(500).send(error);
                 return;
             }
-            console.log('Avaliação removida com sucesso!');
+            console.log('Companhia removida com sucesso!');
             res.status(204).send(rating);
         })
     });
     
 }
-
-// curl http://localhost:3000/companies/companyRating -X POST -v -H "Content-type: application/json" -d @files/companies.json; echo
-// curl http://localhost:3000/companies/companyRating/id -X DELETE -v
