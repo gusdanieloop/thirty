@@ -36,31 +36,31 @@ module.exports = function(app) {
             res.status(400).send(err);
             return;
         }
-        var rating = req.body;
+        var company = req.body;
         
-        rating.register_date = new Date;
+        company.register_date = new Date;
 
         var connection = app.persistence.connectionFactory();
         var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        companyDao.create(rating, function(error, result) {
+        companyDao.create(company, function(error, result) {
             if (error) {
                 console.log('Erro ao inserir companhia.' + error);
                 res.status(500).send(error);
             } else {
-                rating.id = result.insertId;
+                company.id = result.insertId;
                 console.log('Avaliação inserida com sucesso.');
-                res.location('/companies/companyDetail/' + rating.id);
+                res.location('/companies/companyDetail/' + company.id);
                 var response = {
-                    rating_content: rating,
+                    rating_content: company,
                     links: [
                         {
-                            href: 'http://localhost:3000/companies/companyDetail/' + rating.id,
+                            href: 'http://localhost:3000/companies/companyDetail/' + company.id,
                             rel: 'Update',
                             method: 'PUT'
                         },
                         {
-                            href: 'http://localhost:3000/companies/companyDetail/' + rating.id,
+                            href: 'http://localhost:3000/companies/companyDetail/' + company.id,
                             rel: 'Delete',
                             method: 'DELETE'
                         }
@@ -72,40 +72,36 @@ module.exports = function(app) {
 
     });
     
-    app.put('/companies/companyDetail/:id', function(req, res) {
-        var rating = {};
-        var id = req.params.id;
-        rating.id = id;
+    app.put('/companies/companyDetail', function(req, res) {
+        var company = req.body;
 
         var connection = app.persistence.connectionFactory();
         var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        companyDao.update(rating, function(error){
+        companyDao.update(company, function(error) {
             if (error) {
                 res.status(500).send(error);
                 return;
             }
             console.log('Companhia atualizada com sucesso!');
-            res.send(rating);
+            res.send(company);
         })        
     });
 
     app.delete('/companies/companyDetail/:id', function(req, res) {
-        var rating = {};
-        var id = req.params.id;
-
-        rating.id = id;
+        var company = {};
+        company.id = req.params.id;
 
         var connection = app.persistence.connectionFactory();
         var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        companyDao.delete(rating, function(error){
+        companyDao.delete(company, function(error){
             if (error) {
                 res.status(500).send(error);
                 return;
             }
             console.log('Companhia removida com sucesso!');
-            res.status(204).send(rating);
+            res.status(204).send(company);
         })
     });
     

@@ -15,7 +15,10 @@ CompanyDetailDao.prototype.readyById = function(id, callback) {
 }
 
 CompanyDetailDao.prototype.update = function(company, callback) {
-    // this._connection.query('UPDATE company SET stars = ? where id = ?', [company.stars, company.id], callback);
+    this._connection.query(
+        'UPDATE company SET average_rating = ? where id = ?',
+        [company.average_rating, company.id], callback
+    );
 }
 
 CompanyDetailDao.prototype.delete = function(id, callback) {
