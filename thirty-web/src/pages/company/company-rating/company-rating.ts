@@ -66,8 +66,8 @@ export class CompanyRatingPage {
 
   getRatings() {
     this._serverHttp.httpRead(this._uriPathDao).subscribe(
-      (list: []) => {
-        list.length > 0 ? this.ratingList = { ...list } : this.ratingList = undefined;
+      (list: Rating[]) => {
+        list.length > 0 ? this.ratingList = list : this.ratingList = undefined;
         this.resetForm();
       },
       error => alert('Ocorreu um erro.')
