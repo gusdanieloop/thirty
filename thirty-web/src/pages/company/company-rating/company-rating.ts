@@ -6,12 +6,12 @@ import { ServeHttpServiceProvider } from './../../../providers/serve-http-servic
 import { Company } from './../../timeline/company.object';
 import { Rating } from './company-rating.object';
 
-const ZERO_STAR = [ 'star-outline', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
-const ONE_STAR = [ 'star', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
-const TWO_STARS = [ 'star', 'star', 'star-outline', 'star-outline', 'star-outline'];
-const TRHEE_STARS = [ 'star', 'star', 'star', 'star-outline', 'star-outline'];
-const FOUR_STARS = [ 'star', 'star', 'star', 'star', 'star-outline'];
-const FIVE_STARS = [ 'star', 'star', 'star', 'star', 'star'];
+const ZERO_STAR = ['star-outline', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
+const ONE_STAR = ['star', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
+const TWO_STARS = ['star', 'star', 'star-outline', 'star-outline', 'star-outline'];
+const TRHEE_STARS = ['star', 'star', 'star', 'star-outline', 'star-outline'];
+const FOUR_STARS = ['star', 'star', 'star', 'star', 'star-outline'];
+const FIVE_STARS = ['star', 'star', 'star', 'star', 'star'];
 
 @IonicPage()
 @Component({
@@ -54,30 +54,20 @@ export class CompanyRatingPage {
     ratingMedia /= divider;
     ratingMedia = Math.floor(ratingMedia);
 
-    // this.saveCompanyRating(ratingMedia);
+    this.saveCompanyRating(ratingMedia);
   }
 
   checkForm() {
     if (this.rating.comment && (this.rating.stars > 0 && this.rating.stars < 6)) {
       return false;
     }
-
     return true;
   }
 
-  // getRatingById() {
-  //   this._serverHttp.httpRead(this._uriPathDao, this.company.id)
-  //     .subscribe();
-
-  // }
-
   getRatings() {
-    this._serverHttp.httpRead(this._uriPathDao)
-    .subscribe(
-      // (list) => list.length > 0 ? this.ratingList = { ...list } : this.ratingList = undefined,
-      (list: Rating[]) => {
-        this.ratingList = list;
-        this.calculateRatingMedia(list);
+    this._serverHttp.httpRead(this._uriPathDao).subscribe(
+      (list: []) => {
+        list.length > 0 ? this.ratingList = { ...list } : this.ratingList = undefined;
         this.resetForm();
       },
       error => alert('Ocorreu um erro.')
@@ -99,8 +89,8 @@ export class CompanyRatingPage {
       .subscribe(
         () => {
           alert('Ok');
-          this.rating = new Rating();''
-          this.getRatings();
+          this.rating = new Rating();
+          this.calculateRatingMedia(this.ratingList);
           return;
         },
         () => {
@@ -118,9 +108,10 @@ export class CompanyRatingPage {
   }
 
   saveCompanyRating(average: number) {
-    const uriCompany = '/companies/companyDetail/';
+    const uriCompany = '/companies/companyDetail';
     this.company.average_rating = average;
     this._serverHttp.httpUpdate(uriCompany, this.company).subscribe();
+    this.getRatings();
   }
 
   selectStarsRating(starNumber) {
