@@ -7,8 +7,8 @@ module.exports = function(app) {
 
     app.get('/companies/companyDetail', function(req, res) {
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyDetailDao(connection);
-        ratingDao.ready(function(error, result){
+        var companyDao = new app.persistence.CompanyDetailDao(connection);
+        companyDao.ready(function(error, result){
             if (error) {
                 res.status(500).send(error);
                 return;
@@ -26,6 +26,7 @@ module.exports = function(app) {
         req.assert("address_number", "Seu comentário é importante para nós.").notEmpty();
         req.assert("city", "Seu comentário é importante para nós.").notEmpty();
         req.assert("company_type", "Seu comentário é importante para nós.").notEmpty();
+        req.assert("company_id", "Seu comentário é importante para nós.").notEmpty();
         req.assert("description", "Seu comentário é importante para nós.").notEmpty();
 
         var err = req.validationErrors();
@@ -40,9 +41,9 @@ module.exports = function(app) {
         rating.register_date = new Date;
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyDetailDao(connection);
+        var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        ratingDao.create(rating, function(error, result) {
+        companyDao.create(rating, function(error, result) {
             if (error) {
                 console.log('Erro ao inserir companhia.' + error);
                 res.status(500).send(error);
@@ -77,9 +78,9 @@ module.exports = function(app) {
         rating.id = id;
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyDetailDao(connection);
+        var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        ratingDao.update(rating, function(error){
+        companyDao.update(rating, function(error){
             if (error) {
                 res.status(500).send(error);
                 return;
@@ -96,9 +97,9 @@ module.exports = function(app) {
         rating.id = id;
 
         var connection = app.persistence.connectionFactory();
-        var ratingDao = new app.persistence.CompanyDetailDao(connection);
+        var companyDao = new app.persistence.CompanyDetailDao(connection);
 
-        ratingDao.delete(rating, function(error){
+        companyDao.delete(rating, function(error){
             if (error) {
                 res.status(500).send(error);
                 return;
