@@ -50,8 +50,10 @@ export class TimelinePage {
     this.navCtrl.push(CompanyImagePage);
   }
 
-  getRatingPage() {
-    this.navCtrl.push(CompanyRatingPage);
+  getRatingPage(company: Company) {
+    this.navCtrl.push(CompanyRatingPage.name, {
+      selectedCompany: company
+    });
   }
 
 }

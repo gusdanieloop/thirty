@@ -1,5 +1,6 @@
 export class Company {
 
+  id: number;
   main_name: string;
   secondary_name: string;
   address: string;
@@ -7,6 +8,7 @@ export class Company {
   city: string;
   company_type: string;
   description: string;
-  register_date: Date
+  average_rating: number;
+  register_date: Date;
 
 }

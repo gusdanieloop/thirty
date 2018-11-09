@@ -3,6 +3,7 @@ import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angu
 
 import { ServeHttpServiceProvider } from './../../../providers/serve-http-service/serve-http-service';
 
+import { Company } from './../../timeline/company.object';
 import { Rating } from './company-rating.object';
 
 const ZERO_STAR = [ 'star-outline', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
@@ -19,9 +20,10 @@ const FIVE_STARS = [ 'star', 'star', 'star', 'star', 'star'];
 })
 export class CompanyRatingPage {
 
-  stars: Array<string>;
+  company: Company;
   rating: Rating;
   ratingList: Rating[];
+  stars: Array<string>;
 
   private _uriPathDao: string = '/companies/companyRating';
 
@@ -31,14 +33,28 @@ export class CompanyRatingPage {
     private _alertCtrl: AlertController,
     private _serverHttp: ServeHttpServiceProvider
   ) {
-    this.rating = new Rating();
-    this.rating.stars = 0;
-    this.stars = ZERO_STAR;
+    this.resetForm();
+
+    this.company = this.navParams.get('selectedCompany');
   }
 
   ionViewDidLoad() {
     this.getRatings();
     this.checkForm();
+  }
+
+  calculateRatingMedia(ratingList: Rating[]) {
+    let ratingMedia = 0;
+    let divider = 0;
+
+    for(let rating of ratingList) {
+      ratingMedia += rating.stars;
+      divider++;
+    }
+    ratingMedia /= divider;
+    ratingMedia = Math.floor(ratingMedia);
+
+    // this.saveCompanyRating(ratingMedia);
   }
 
   checkForm() {
@@ -49,11 +65,21 @@ export class CompanyRatingPage {
     return true;
   }
 
+  // getRatingById() {
+  //   this._serverHttp.httpRead(this._uriPathDao, this.company.id)
+  //     .subscribe();
+
+  // }
+
   getRatings() {
     this._serverHttp.httpRead(this._uriPathDao)
     .subscribe(
       // (list) => list.length > 0 ? this.ratingList = { ...list } : this.ratingList = undefined,
-      (list: Rating[]) => this.ratingList = list,
+      (list: Rating[]) => {
+        this.ratingList = list;
+        this.calculateRatingMedia(list);
+        this.resetForm();
+      },
       error => alert('Ocorreu um erro.')
     );
   }
@@ -67,11 +93,13 @@ export class CompanyRatingPage {
   }
 
   sendRating() {
+    this.rating.company_id = this.company.id;
+
     this._serverHttp.httpCreate(this._uriPathDao, this.rating)
       .subscribe(
         () => {
           alert('Ok');
-          this.rating = new Rating();
+          this.rating = new Rating();''
           this.getRatings();
           return;
         },
@@ -80,6 +108,19 @@ export class CompanyRatingPage {
           return;
         }
       );
+  }
+
+  resetForm() {
+    this.rating = new Rating();
+    this.rating.comment = "";
+    this.rating.stars = 0;
+    this.stars = ZERO_STAR;
+  }
+
+  saveCompanyRating(average: number) {
+    const uriCompany = '/companies/companyDetail/';
+    this.company.average_rating = average;
+    this._serverHttp.httpUpdate(uriCompany, this.company).subscribe();
   }
 
   selectStarsRating(starNumber) {
