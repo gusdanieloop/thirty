@@ -65,7 +65,8 @@ export class CompanyRatingPage {
   }
 
   getRatings() {
-    this._serverHttp.httpRead(this._uriPathDao).subscribe(
+    this._uriPathDao += '/';
+    this._serverHttp.httpReadbyId(this._uriPathDao, this.company.id).subscribe(
       (list: Rating[]) => {
         list.length > 0 ? this.ratingList = list : this.ratingList = undefined;
         this.resetForm();

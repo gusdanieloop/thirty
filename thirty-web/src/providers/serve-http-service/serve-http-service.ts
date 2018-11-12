@@ -18,6 +18,10 @@ export class ServeHttpServiceProvider {
     return this._http.get(`${this.API_URL}${uriPath}`);
   }
 
+  httpReadbyId(uriPath: string, idObject: number) {
+    return this._http.get(`${this.API_URL}${uriPath}${idObject}`);
+  }
+
   httpUpdate(uriPath: string, object) {
     return this._http.put(`${this.API_URL}${uriPath}`, object);
   }
