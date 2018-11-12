@@ -10,8 +10,8 @@ CompanyRatingDao.prototype.ready = function(error, callback) {
     this._connection.query('SELECT * FROM rating', error, callback);
 }
 
-CompanyRatingDao.prototype.readyById = function(id, callback) {
-    this._connection.query('SELECT * FROM rating WHERE id = ?', [id], callback);
+CompanyRatingDao.prototype.readyByIdCompany = function(id, callback) {
+    this._connection.query('SELECT * FROM rating WHERE company_id = ?', [id], callback);
 }
 
 CompanyRatingDao.prototype.update = function(rating, callback) {

@@ -17,6 +17,20 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/companies/companyRating/:id', function(req, res) {
+        var idCompany = req.params.id;
+
+        var connection = app.persistence.connectionFactory();
+        var ratingDao = new app.persistence.CompanyRatingDao(connection);
+        ratingDao.readyByIdCompany(idCompany, function(error, result){
+            if (error) {
+                res.status(500).send(error);
+                return;
+            }
+            res.status(200).send(result);
+        });
+    });
+
     app.post('/companies/companyRating', function(req, res) {        
         console.log('Ok', req);
         
