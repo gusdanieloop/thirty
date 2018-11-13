@@ -2,16 +2,13 @@ import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ServeHttpServiceProvider } from './../../../providers/serve-http-service/serve-http-service';
+import { StarfillServiceProvider } from './../../../providers/starfill-service/starfill-service';
 
 import { Company } from './../../timeline/company.object';
 import { Rating } from './company-rating.object';
 
+// check improvement
 const ZERO_STAR = ['star-outline', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
-const ONE_STAR = ['star', 'star-outline', 'star-outline', 'star-outline', 'star-outline'];
-const TWO_STARS = ['star', 'star', 'star-outline', 'star-outline', 'star-outline'];
-const TRHEE_STARS = ['star', 'star', 'star', 'star-outline', 'star-outline'];
-const FOUR_STARS = ['star', 'star', 'star', 'star', 'star-outline'];
-const FIVE_STARS = ['star', 'star', 'star', 'star', 'star'];
 
 @IonicPage()
 @Component({
@@ -31,7 +28,8 @@ export class CompanyRatingPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _serverHttp: ServeHttpServiceProvider
+    private _serverHttp: ServeHttpServiceProvider,
+    private _starFill: StarfillServiceProvider
   ) {
     this.resetForm();
 
@@ -65,8 +63,7 @@ export class CompanyRatingPage {
   }
 
   getRatings() {
-    this._uriPathDao += '/';
-    this._serverHttp.httpReadbyId(this._uriPathDao, this.company.id).subscribe(
+    this._serverHttp.httpReadbyId(this._uriPathDao + '/', this.company.id).subscribe(
       (list: Rating[]) => {
         list.length > 0 ? this.ratingList = list : this.ratingList = undefined;
         this.resetForm();
@@ -116,31 +113,8 @@ export class CompanyRatingPage {
   }
 
   selectStarsRating(starNumber) {
-    switch (starNumber) {
-      case 1:
-        this.stars = ONE_STAR;
-        this.rating.stars = 1;
-        break;
-      case 2:
-        this.stars = TWO_STARS;
-        this.rating.stars = 2;
-        break;
-      case 3:
-        this.stars = TRHEE_STARS;
-        this.rating.stars = 3;
-        break;
-      case 4:
-        this.stars = FOUR_STARS;
-        this.rating.stars = 4;
-        break;
-      case 5:
-        this.stars = FIVE_STARS;
-        this.rating.stars = 5;
-        break;
-      default:
-        this.stars = ZERO_STAR;
-        break;
-    }
+    this.rating.stars = starNumber;
+    this.stars = this._starFill.getStarfill(starNumber);
   }
 
 }

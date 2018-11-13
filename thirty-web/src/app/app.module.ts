@@ -7,6 +7,9 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ServeHttpServiceProvider } from '../providers/serve-http-service/serve-http-service';
+import { StarfillServiceProvider } from './../providers/starfill-service/starfill-service';
+
 import { CompanyImagePageModule } from '../pages/company/company-image/company-image.module';
 import { CompanyMenuPageModule } from './../pages/company/company-menu/company-menu.module';
 import { CompanyRatingPageModule } from '../pages/company/company-rating/company-rating.module';
@@ -15,7 +18,6 @@ import { FilterPageModule } from '../pages/filter/filter.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { TabbarFooterPageModule } from '../pages/tabbar-footer/tabbar-footer.module';
 import { TimelinePageModule } from '../pages/timeline/timeline.module';
-import { ServeHttpServiceProvider } from '../providers/serve-http-service/serve-http-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ServeHttpServiceProvider } from '../providers/serve-http-service/serve-
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
-    ServeHttpServiceProvider
+    ServeHttpServiceProvider,
+    StarfillServiceProvider
   ]
 })
 export class AppModule {}
