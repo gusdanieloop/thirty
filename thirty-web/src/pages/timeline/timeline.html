@@ -23,14 +23,12 @@
         <button ion-button clear
           class="thirty-content-rating-stars-button"
           (click)="getRatingPage(company)">
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-        </button>
-      </div>
+            <ion-icon *ngFor="let star of company.starList"
+              [name]="star">
+            </ion-icon>
+          </button>
 
+        </div>
       <div class="thirty-content-rating-description">
         <span>
           {{ company.description }}

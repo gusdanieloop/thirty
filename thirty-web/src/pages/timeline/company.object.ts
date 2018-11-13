@@ -10,5 +10,6 @@ export class Company {
   description: string;
   average_rating: number;
   register_date: Date;
+  starList: any;
 
 }

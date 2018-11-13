@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
+import { StarfillServiceProvider } from './../../providers/starfill-service/starfill-service';
 import { ServeHttpServiceProvider } from '../../providers/serve-http-service/serve-http-service';
 
 import { Company } from './company.object';
@@ -17,13 +18,16 @@ import { CompanyRoutePage } from '../company/company-route/company-route';
 export class TimelinePage {
 
   companyList: Company[];
+  companiesStar: any;
+  stars: [];
 
   private _uriPathDao: string = '/companies/companyDetail';
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _serverHttp: ServeHttpServiceProvider
+    private _serverHttp: ServeHttpServiceProvider,
+    private _starFill : StarfillServiceProvider
   ) { }
 
   ionViewDidLoad() {
@@ -31,9 +35,15 @@ export class TimelinePage {
   }
 
   getCompanies() {
-    this._serverHttp.httpRead(this._uriPathDao)
-    .subscribe(
-      (list: Company[]) => this.companyList = list,
+    this._serverHttp.httpRead(this._uriPathDao).subscribe(
+      (list: Company[]) => {
+        this.companyList = list;
+
+        for (let company of this.companyList) {
+          company.starList = this.getStars(company.average_rating);
+        }
+
+      },
       error => alert('Ocorreu um erro.')
     );
   }
@@ -54,6 +64,10 @@ export class TimelinePage {
     this.navCtrl.push(CompanyRatingPage.name, {
       selectedCompany: company
     });
+  }
+
+  getStars(starNumber = 0) {
+    return this._starFill.getStarfill(starNumber);
   }
 
 }
