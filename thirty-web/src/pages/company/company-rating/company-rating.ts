@@ -43,12 +43,13 @@ export class CompanyRatingPage {
 
   calculateRatingMedia(ratingList: Rating[]) {
     let ratingMedia = 0;
-    let divider = 0;
+    let divider = 1;
 
     for(let rating of ratingList) {
-      ratingMedia += rating.stars;
       divider++;
+      ratingMedia += rating.stars;
     }
+
     ratingMedia /= divider;
     ratingMedia = Math.floor(ratingMedia);
 
@@ -87,8 +88,10 @@ export class CompanyRatingPage {
       .subscribe(
         () => {
           alert('Ok');
-          this.rating = new Rating();
-          this.calculateRatingMedia(this.ratingList);
+          this.getRatings();
+          if (this.ratingList) {
+            this.calculateRatingMedia(this.ratingList);
+          }
           return;
         },
         () => {

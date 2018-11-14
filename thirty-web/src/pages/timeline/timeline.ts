@@ -34,6 +34,10 @@ export class TimelinePage {
     this.getCompanies();
   }
 
+  ionViewDidEnter() {
+    this.getCompanies();
+  }
+
   getCompanies() {
     this._serverHttp.httpRead(this._uriPathDao).subscribe(
       (list: Company[]) => {
@@ -52,8 +56,10 @@ export class TimelinePage {
     this.navCtrl.push(CompanyRoutePage);
   }
 
-  getCompanyMenu() {
-    this.navCtrl.push(CompanyMenuPage);
+  getCompanyMenu(company: Company) {
+    this.navCtrl.push(CompanyMenuPage.name, {
+      selectedCompany: company
+    });
   }
 
   getCompanyImages() {
