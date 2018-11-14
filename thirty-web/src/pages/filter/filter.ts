@@ -16,7 +16,6 @@ export class FilterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FilterPage');
   }
 
 }

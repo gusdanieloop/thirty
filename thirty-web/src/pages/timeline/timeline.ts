@@ -19,7 +19,6 @@ export class TimelinePage {
 
   companyList: Company[];
   companiesStar: any;
-  stars: [];
 
   private _uriPathDao: string = '/companies/companyDetail';
 

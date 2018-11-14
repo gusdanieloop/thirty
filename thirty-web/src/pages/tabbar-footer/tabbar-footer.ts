@@ -22,7 +22,6 @@ export class TabbarFooterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabbarFooterPage');
   }
 
 }

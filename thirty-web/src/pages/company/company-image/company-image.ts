@@ -12,7 +12,6 @@ export class CompanyImagePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyImagePage');
   }
 
 }

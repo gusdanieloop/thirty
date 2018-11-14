@@ -23,12 +23,11 @@ export class CompanyRoutePage {
 
   // this.launchNavigator.navigate('Toronto, ON', options)
   // .then(
-  //   success => console.log('Launched navigator'),
-  //   error => console.log('Error launching navigator', error)
+  //   success => alert('Launched navigator'),
+  //   error => alert('Error launching navigator', error)
   // );
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyRoutePage');
   }
 
 }
