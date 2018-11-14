@@ -41,19 +41,18 @@ export class CompanyRatingPage {
     this.checkForm();
   }
 
-  calculateRatingMedia(ratingList: Rating[]) {
-    let ratingMedia = 0;
-    let divider = 1;
+  calculateAverageRating(ratingList: Rating[]) {
+    let averageRating = 0;
+    let divider = 0;
 
     for(let rating of ratingList) {
-      divider++;
-      ratingMedia += rating.stars;
+      divider += 1;
+      averageRating += rating.stars;
     }
 
-    ratingMedia /= divider;
-    ratingMedia = Math.floor(ratingMedia);
-
-    this.saveCompanyRating(ratingMedia);
+    averageRating /= divider;
+    let intAverage = Math.floor(averageRating);
+    this.saveCompanyRating(intAverage);
   }
 
   checkForm() {
