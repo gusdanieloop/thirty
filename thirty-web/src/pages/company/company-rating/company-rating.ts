@@ -89,8 +89,13 @@ export class CompanyRatingPage {
         () => {
           alert('Ok');
           this.getRatings();
+
           if (this.ratingList) {
-            this.calculateRatingMedia(this.ratingList);
+
+            setTimeout(() => {
+              this.calculateAverageRating(this.ratingList);
+            }, 30);
+
           }
           return;
         },
