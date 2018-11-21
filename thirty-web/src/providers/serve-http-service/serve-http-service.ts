@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -20,6 +20,15 @@ export class ServeHttpServiceProvider {
 
   httpReadbyId(uriPath: string, idObject: number) {
     return this._http.get(`${this.API_URL}${uriPath}${idObject}`);
+  }
+
+  httpReadbyParamaters(uriPath: string, firstParam, secondParam) {
+    let params = new HttpParams();
+
+    params = params.append('firstParameter', firstParam);
+    params = params.append('secondParameter', secondParam);
+
+    return this._http.get(`${this.API_URL}${uriPath}`, { params: params });
   }
 
   httpUpdate(uriPath: string, object) {
