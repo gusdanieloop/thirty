@@ -6,6 +6,9 @@ import { ServeHttpServiceProvider } from './../../../providers/serve-http-servic
 import { Company } from './../../timeline/company.object';
 import { Menu } from './company-menu.object';
 
+const DRINKS = 1;
+const DISHES = 2;
+
 @IonicPage()
 @Component({
   selector: 'page-company-menu',
@@ -14,7 +17,8 @@ import { Menu } from './company-menu.object';
 export class CompanyMenuPage {
 
   company: Company;
-  menuList: Menu[];
+  menuDishesList: Menu[];
+  menuDrinkList: Menu[];
   dishes: boolean;
   drinks: boolean;
 
@@ -23,22 +27,33 @@ export class CompanyMenuPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _serverHttp: ServeHttpServiceProvider,) {
-    this.company = this.navParams.get('selectedCompany');
-    this.dishes = false;
-    this.drinks = false;
+    private _serverHttp: ServeHttpServiceProvider) {
+
+      this.company = this.navParams.get('selectedCompany');
+      this.dishes = false;
+      this.drinks = false;
   }
 
   ionViewDidLoad() {
-    this.getMenus();
+    if (this.company) {
+      this.getMenuDishes();
+      this.getMenuDrinks();
+    }
   }
 
-  getMenus() {
-    this._serverHttp.httpReadbyId(this._uriPathDao + '/', this.company.id).subscribe(
+  getMenuDishes() {
+    this._serverHttp.httpReadbyParamaters(this._uriPathDao + '/', this.company.id, DISHES).subscribe(
       (list: Menu[]) => {
-        list.length > 0 ? this.menuList = list : this.menuList = undefined;
-        console.log('menuList', this.menuList);
+        list.length > 0 ? this.menuDishesList = list : this.menuDishesList = undefined;
+      },
+        error => alert('Ocorreu um erro X.')
+    );
+  }
 
+  getMenuDrinks() {
+    this._serverHttp.httpReadbyParamaters(this._uriPathDao + '/', this.company.id, DRINKS).subscribe(
+      (list: Menu[]) => {
+        list.length > 0 ? this.menuDrinkList = list : this.menuDrinkList = undefined;
       },
         error => alert('Ocorreu um erro.')
     );
