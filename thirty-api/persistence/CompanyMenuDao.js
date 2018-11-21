@@ -10,8 +10,8 @@ CompanyMenuDao.prototype.ready = function(error, callback) {
     this._connection.query('SELECT * FROM menu', error, callback);
 }
 
-CompanyMenuDao.prototype.readyByIdCompany = function(id, callback) {
-    this._connection.query('SELECT * FROM menu WHERE company_id = ?', [id], callback);
+CompanyMenuDao.prototype.readyByParams = function(companyId, menuType, callback) {
+    this._connection.query('SELECT * FROM menu WHERE company_id = ? AND menu_type = ?', [companyId, menuType], callback);
 }
 
 CompanyMenuDao.prototype.update = function(menu, callback) {

@@ -6,24 +6,11 @@ module.exports = function(app) {
     });
 
     app.get('/companies/companyMenu', function(req, res) {
+        const fP = req.query.firstParameter;
+        const sP = req.query.secondParameter;
         var connection = app.persistence.connectionFactory();
         var menuDao = new app.persistence.CompanyMenuDao(connection);
-        menuDao.ready(function(error, result){
-            if (error) {
-                res.status(500).send(error);
-                return;
-            }
-            res.status(200).send(result);
-        });
-    });
-
-    app.get('/companies/companyMenu/:id', function(req, res) {
-        var idCompany = req.params.id;
-
-        var connection = app.persistence.connectionFactory();
-        var menuDao = new app.persistence.CompanyMenuDao(connection);
-
-        menuDao.readyByIdCompany(idCompany, function(error, result){
+        menuDao.readyByParams(fP, sP,function(error, result){
             if (error) {
                 res.status(500).send(error);
                 return;
@@ -38,7 +25,7 @@ module.exports = function(app) {
         req.assert("name", "Por favor informe uma quantidade de estrelas.").notEmpty();
         req.assert("detail", "Seu comentário é importante para nós.").notEmpty();
         req.assert("image_url", "Seu comentário é importante para nós.").notEmpty();
-        // req.assert("company_id", "Seu comentário é importante para nós.").notEmpty();
+        // req.assert("company_id", "Id do estabelecimento inválido.").notEmpty();
 
         var err = req.validationErrors();
 
