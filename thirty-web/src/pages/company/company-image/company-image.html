@@ -6,23 +6,22 @@
 
 </ion-header>
 
-
 <ion-content class="thirty-content-container-socondary">
-
   <ion-slides pager>
 
-    <ion-slide>
-      <img src="./../../../assets/image/example/pub.1.2.jpg"/>
-    </ion-slide>
+    <ng-container *ngIf="imageList && imageList.length > 0; then hasImg; else notHasImg"></ng-container>
 
-    <ion-slide>
-      <img src="./../../../assets/image/example/pub2.1.jpg"/>
-    </ion-slide>
+    <ng-template #hasImg>
+      <ion-slide *ngFor="let image of imageList">
+        <img class="company-image-container" [src]="image.path"/>
+      </ion-slide>
+    </ng-template>
 
-    <ion-slide>
-      <img src="./../../../assets/image/example/pub1.1.jpg"/>
-    </ion-slide>
+    <ng-template #notHasImg>
+      <ion-slide>
+        <img class="company-image-container" src="./../../../assets/image/not_image.png"/>
+      </ion-slide>
+    </ng-template>
 
   </ion-slides>
-
 </ion-content>

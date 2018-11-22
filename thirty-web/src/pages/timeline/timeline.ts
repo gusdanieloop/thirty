@@ -61,8 +61,10 @@ export class TimelinePage {
     });
   }
 
-  getCompanyImages() {
-    this.navCtrl.push(CompanyImagePage);
+  getCompanyImages(company: Company) {
+    this.navCtrl.push(CompanyImagePage.name, {
+      selectedCompany: company
+    });
   }
 
   getRatingPage(company: Company) {
