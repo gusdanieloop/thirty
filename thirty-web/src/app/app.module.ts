@@ -15,9 +15,13 @@ import { CompanyMenuPageModule } from './../pages/company/company-menu/company-m
 import { CompanyRatingPageModule } from '../pages/company/company-rating/company-rating.module';
 import { CompanyRoutePageModule } from './../pages/company/company-route/company-route.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
+import { LoginPageModule } from './../pages/login/login.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { TabbarFooterPageModule } from '../pages/tabbar-footer/tabbar-footer.module';
 import { TimelinePageModule } from '../pages/timeline/timeline.module';
+import { UserAuthProvider } from '../providers/user-auth/user-auth';
+
+import 'rxjs/add/operator/do';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
     SettingsPageModule,
     FilterPageModule,
     HttpClientModule,
+    LoginPageModule,
     TabbarFooterPageModule,
     TimelinePageModule,
   ],
@@ -47,7 +52,8 @@ import { TimelinePageModule } from '../pages/timeline/timeline.module';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
     ServeHttpServiceProvider,
-    StarfillServiceProvider
+    StarfillServiceProvider,
+    UserAuthProvider
   ]
 })
 export class AppModule {}
